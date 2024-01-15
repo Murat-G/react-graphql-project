@@ -1,24 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import { useState } from "react";
+import AppHeader from "./components/layout/header";
+import SearchSection from "./components/main/SearchSection";
+import PeopleTable from "./components/main/PeopleTable";
 function App() {
+  const [sortedValue, setSortedValue] = useState<string>("");
+  const [searchValue, setSearchValue] = useState<string>("");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <AppHeader />
+      <SearchSection
+        sortedValue={sortedValue}
+        setSortedValue={setSortedValue}
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
+      />
+      <PeopleTable searchValue={searchValue} sortedValue={sortedValue} />
     </div>
   );
 }
