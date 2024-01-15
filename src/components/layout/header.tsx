@@ -1,11 +1,9 @@
-import React, { useState } from "react";
 import { Layout, Menu } from "antd";
 import {
   HomeOutlined,
   InfoCircleOutlined,
   ContactsOutlined,
 } from "@ant-design/icons";
-import style from "./components/styles/style.module.css";
 
 const { Header } = Layout;
 
