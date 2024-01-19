@@ -2,7 +2,7 @@ import { Table, Modal, Spin, message } from "antd";
 import { useEffect, useState } from "react";
 import { ApolloClient, InMemoryCache, gql, useQuery } from "@apollo/client";
 import { EditFilled } from "@ant-design/icons";
-
+import ExportToExcel from "../export/ExportToExcel";
 interface SearchSectionProps {
   sortedValue: string;
   searchValue: string;
@@ -11,6 +11,7 @@ interface Person {
   name: string;
   gender: string;
   eyeColor: string;
+  [key: string]: string;
 }
 
 interface PeopleData {
@@ -114,6 +115,11 @@ const PeopleTable: React.FC<SearchSectionProps> = ({
 
   return (
     <Spin spinning={loader}>
+      <div style={{ display: "flex", justifyContent: "flex-end" }}>
+        <ExportToExcel
+          data={searchValue || sortedValue ? filteredPeople || [] : people}
+        />
+      </div>
       <div>
         <Table
           columns={columns}
